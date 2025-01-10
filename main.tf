@@ -7,6 +7,15 @@ provider "github" {
   token = var.github_token
 }
 
+provider "mondoo" {
+}
+
+resource "mondoo_space" "my_space" {
+  name = var.tfc_workspace
+  # optional id otherwise it will be auto-generated
+  # id = "your-space-id"
+  org_id = var.mondoo_org_id
+}
 
 ### GITHUB ###
 
