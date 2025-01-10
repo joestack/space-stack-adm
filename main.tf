@@ -17,6 +17,24 @@ resource "mondoo_space" "my_space" {
   org_id = var.mondoo_org_id
 }
 
+resource "mondoo_registration_token" "token" {
+  description   = "Get a mondoo registration token"
+  #count         = length(var.space_names)
+  space_id      = mondoo_space.my_space.id
+  no_expiration = true
+  # define optional expiration
+  # expires_in = "1h"
+  depends_on = [
+    mondoo_space.my_space
+  ]
+}
+
+output "space_registration_token" {
+  description = "registration tokens for the specified spaces"
+  value = mondoo_registration_token.token.result
+  sensitive = false
+}
+
 ### GITHUB ###
 
 #Repo
