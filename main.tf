@@ -104,8 +104,8 @@ resource "github_actions_variable" "org" {
 resource "github_repository_file" "workflow" {
   repository          = github_repository.demo.name
   branch              = "main"
-  file                = ".github/workflows/cicd-terraform.yml"
-  content             = file("${path.root}/actions/cicd-terraform.yml")
+  file                = ".github/workflows/cicd-basis.yml"
+  content             = file("${path.root}/actions/cicd-basic.yml")
   commit_message      = "Managed by Terraform (security team)"
   commit_author       = "Joe Stack"
   commit_email        = "joern@mondoo.com"
