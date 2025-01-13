@@ -9,10 +9,10 @@ variable "tfc_token" {
   type = string
 }
 
-# variable "mondoo_service_account" {
-#   description = "Mondoo Service Account Token (provider auth)"
-#   type = string
-# }
+variable "mondoo_service_account" {
+  description = "Mondoo Service Account Token (provider auth)"
+  type = string
+}
 
 variable "mondoo_org_id" {
   description = "The organization id to create the spaces in"
