@@ -80,7 +80,8 @@ resource "github_actions_secret" "tfc_oauth_token" {
 resource "github_actions_secret" "mondoo_token" {
   repository       = github_repository.demo.name
   secret_name      = "MONDOO_CONFIG_BASE64"
-  plaintext_value  = var.md_cicd_token
+  #plaintext_value  = var.md_cicd_token
+  plaintext_value = mondoo_registration_token.token.result
 }
 
 #Variables
@@ -126,26 +127,26 @@ resource "tfe_workspace_settings" "demo-settings" {
   execution_mode = "remote"
 }
 
-resource "tfe_variable" "demo" {
-  key          = "windows_password"
-  value        = var.windows_password
-  category     = "terraform"
-  workspace_id = tfe_workspace.demo.id
-  description  = "Windows RDP PW"
-}
+# resource "tfe_variable" "demo" {
+#   key          = "windows_password"
+#   value        = var.windows_password
+#   category     = "terraform"
+#   workspace_id = tfe_workspace.demo.id
+#   description  = "Windows RDP PW"
+# }
 
-resource "tfe_variable" "win_reg_token" {
-  key          = "win_reg_token"
-  value        = var.win_reg_token
-  category     = "terraform"
-  workspace_id = tfe_workspace.demo.id
-  description  = "Windows Registration Token for Mondoo"
-}
+# resource "tfe_variable" "win_reg_token" {
+#   key          = "win_reg_token"
+#   value        = var.win_reg_token
+#   category     = "terraform"
+#   workspace_id = tfe_workspace.demo.id
+#   description  = "Windows Registration Token for Mondoo"
+# }
 
-resource "tfe_variable" "linux_reg_token" {
-  key          = "linux_reg_token"
-  value        = var.linux_reg_token
-  category     = "terraform"
-  workspace_id = tfe_workspace.demo.id
-  description  = "Linux Registration Token for Mondoo"
-}
+# resource "tfe_variable" "linux_reg_token" {
+#   key          = "linux_reg_token"
+#   value        = var.linux_reg_token
+#   category     = "terraform"
+#   workspace_id = tfe_workspace.demo.id
+#   description  = "Linux Registration Token for Mondoo"
+# }
