@@ -81,7 +81,7 @@ resource "github_actions_secret" "mondoo_token" {
   repository       = github_repository.demo.name
   secret_name      = "MONDOO_CONFIG_BASE64"
   #plaintext_value  = var.md_cicd_token
-  plaintext_value = mondoo_registration_token.token.result
+  plaintext_value = var.mondoo_service_account
 }
 
 #Variables
